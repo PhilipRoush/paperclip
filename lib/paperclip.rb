@@ -238,7 +238,7 @@ module Paperclip
         if respond_to?(:class_attribute)
           self.attachment_definitions = {}
         else
-          write_inheritable_attribute(:attachment_definitions, {})
+          inheritable_attribute[:attachment_definitions] = {} if attachment_definitions.nil?
         end
       end
 
@@ -352,7 +352,7 @@ module Paperclip
       if respond_to?(:class_attribute)
         self.attachment_definitions
       else
-        read_inheritable_attribute(:attachment_definitions)
+        inheritable_attributes[:attachment_definitions]
       end
     end
   end
